@@ -48,11 +48,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\Users\RegisterUserDto.cs" />
+    <Compile Include="Enums\PermissionTypes.cs" />
+    <Compile Include="Interfaces\Repositories\Base\IBaseRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Users\IAccountRepository.cs" />
+    <Compile Include="Interfaces\Services\Users\IAccountService.cs" />
     <Compile Include="MapperProfile.cs" />
+    <Compile Include="Models\DALModels\Users\AccountDbModel.cs" />
+    <Compile Include="Models\Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\BLLModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,8 @@
-﻿using Ninject.Modules;
+﻿using System.Data.Entity;
+using Ninject.Modules;
+using TestProj.Common.Interfaces.Repositories.Users;
+using TestProj.DAL.Context;
+using TestProj.DAL.Repositories.Users;
 
 namespace TestProj.DAL
 {
@@ -6,7 +10,9 @@ namespace TestProj.DAL
     {
         public override void Load()
         {
-            // TODO: Register DAL dependencies here.
+            this.Bind<TestProjContext>().ToSelf();
+            this.Bind<DbContext>().To<TestProjContext>();
+            this.Bind<IAccountRepository>().To<AccountRepository>();
         }
     }
 }

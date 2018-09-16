@@ -16,20 +16,20 @@ namespace TestProj.App_Start
     using Ninject.Web.Common.WebHost;
     using Ninject.Web.WebApi;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -37,7 +37,7 @@ namespace TestProj.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -51,7 +51,7 @@ namespace TestProj.App_Start
             Mapper.Initialize(config =>
             {
                 config.ConstructServicesUsing(t => kernel.Get(t));
-               // config.AddProfiles(Assembly.GetExecutingAssembly(), typeof(Common.MapperProfile).Assembly);
+                config.AddProfiles(Assembly.GetExecutingAssembly(), typeof(Common.MapperProfile).Assembly);
             });
 
             RegisterServices(kernel);
@@ -66,6 +66,6 @@ namespace TestProj.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Load(Assembly.GetExecutingAssembly(), typeof(TestProj.BLL.NInjectProfile).Assembly, typeof(DAL.NInjectProfile).Assembly);
-        }        
+        }
     }
 }

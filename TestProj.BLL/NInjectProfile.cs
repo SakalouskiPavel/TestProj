@@ -1,4 +1,6 @@
 ﻿using Ninject.Modules;
+using TestProj.BLL.Services.Users;
+using TestProj.Common.Interfaces.Services.Users;
 
 namespace TestProj.BLL
 {
@@ -6,7 +8,7 @@ namespace TestProj.BLL
     {
         public override void Load()
         {
-            // TODO: Register BLL dependencies here.
+            this.Bind<IAccountService>().To<AccountService>();
         }
     }
 }
